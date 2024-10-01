@@ -1,0 +1,457 @@
+@font-face {
+  font-family: "SpaceFont";
+  src: url("EdgeOfTheGalaxyRegular-OVEa6.otf");
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "SpaceFont", Arial, sans-serif;
+  background-image: url("space_background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #ffffff;
+}
+
+/* Верхняя навигационная панель */
+.navbar {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.navbar ul li {
+  margin: 0 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #1E90FF;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
+}
+
+/* Заголовок */
+.header {
+  text-align: center;
+  padding-top: 80px; /* Отступ для верхней панели */
+}
+
+.header h2 {
+  margin: 10px 0;
+  font-size: 2em;
+  animation: fadeInDown 1.5s;
+}
+
+#credit, #teacher {
+  font-size: 1.2em;
+  animation: fadeInUp 1.5s;
+}
+
+#credit a, #teacher a {
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+}
+
+.link-hover::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #3225de;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+.link-hover:hover {
+  color: #FFD700;
+}
+
+/* Подсказка для китайской надписи */
+#teacher a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+/* Основной контент */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+/* Модули */
+.module {
+  background: rgba(0, 0, 0, 0.7);
+  width: 80%;
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeIn 2s;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.module-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+  font-family: "SpaceFont", Arial, sans-serif;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.module-content {
+  padding: 20px;
+  display: block;
+}
+
+.module.collapsed .module-content {
+  display: none;
+}
+
+.module.collapsed .toggle-button {
+  transform: rotate(-90deg);
+}
+
+/* Анимация плавного затухания */
+.module-content {
+  animation: fadeToggle 0.5s;
+}
+
+@keyframes fadeToggle {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#checkButton {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  background: #1E90FF;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+#checkButton:hover {
+  background: #63B8FF;
+  transform: scale(1.05);
+}
+
+
+header, footer {
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 20px 0;
+}
+
+header h1, header h2 {
+  margin: 10px 0;
+  animation: fadeInDown 1.5s;
+}
+
+#credit span {
+  font-size: 1.2em;
+  animation: fadeInUp 1.5s;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.module {
+  background: rgba(0, 0, 0, 0.7);
+  width: 80%;
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeIn 2s;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.module-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.module-content {
+  padding: 20px;
+  display: block;
+}
+
+.module.collapsed .module-content {
+  display: none;
+}
+
+.module.collapsed .toggle-button {
+  transform: rotate(-90deg);
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.button-group, .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button-group input, .radio-group label {
+  margin: 5px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.button-group input:hover, .radio-group label:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.button-group input.active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+input[name="Y-input"] {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1em;
+  text-align: center;
+}
+
+#checkButton {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  background: #1E90FF;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+#checkButton:hover {
+  background: #63B8FF;
+  transform: scale(1.05);
+}
+
+.canvas-section {
+  text-align: center;
+}
+
+#svg {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  margin: auto;
+}
+
+#outputTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#outputTable th, #outputTable td {
+  padding: 15px;
+  border: 1px solid #ffffff;
+}
+
+#outputTable th {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.success {
+  color: #FFD700; /* Золотистый цвет */
+  font-weight: bold;
+  text-shadow: 0 0 5px #FFD700;
+}
+
+.fail {
+  color: #C0C0C0; /* Серебристый цвет */
+  font-weight: bold;
+  text-shadow: 0 0 5px #C0C0C0;
+}
+
+#goBack a {
+  color: #1E90FF;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+#goBack a:hover {
+  color: #63B8FF;
+}
+
+footer figure img {
+  width: 50px;
+  height: auto;
+}
+
+footer figcaption {
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Анимация черной дыры при сворачивании/разворачивании */
+.module-content {
+  transition: max-height 0.5s ease-in-out;
+}
+
+
+/* Кнопка "Вернуться к форме" */
+.space-button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  background: #11368c;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  margin-top: 20px;
+}
+
+.space-button:hover {
+  background: #1a587a;
+  transform: scale(1.05);
+}
+
+.miracle-button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  padding: 10px 20px;
+  background: #1E90FF;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.miracle-button:hover {
+  background: #63B8FF;
+  transform: scale(1.05);
+}
+
+#svg {
+  display: block;
+  margin: 20px auto;
+  color: #ffffff;
+  fill: #ffffff
+}

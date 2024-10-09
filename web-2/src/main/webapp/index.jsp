@@ -2,6 +2,11 @@
 <%@ page import="web.daos.PointDao" %>
 <%@ page import="web.models.Point" %>
 
+
+<!-- Используем Bean -->
+<jsp:useBean id="pointDao" class="web.daos.PointDao" scope="session" />
+
+
 <!DOCTYPE html>
 <html lang="ru-RU">
 
@@ -25,7 +30,7 @@
   <ul>
     <li><a href="#">Main</a></li>
     <li><a href="#">About project</a></li>
-    <li><a href="https://rt.pornhub.com/users/tashertemka">Contact us</a></li>
+    <li><a href="#">Contact us</a></li>
   </ul>
   <button id="miracleButton" class="miracle-button">Miracle</button>
 </nav>
@@ -80,6 +85,8 @@
       </form>
     </div>
   </section>
+
+
 
   <!-- график типо -->
   <section class="module">
@@ -162,52 +169,49 @@
   </section>
 
 
-  <section class="module">
-    <div class="module-header">
-      <h3>Results of calculating:</h3>
-      <button class="toggle-button">&#9660;</button>
-    </div>
-    <div class="module-content">
-      <% PointDao dao = (PointDao) request.getSession().getAttribute("bean");
-        if (dao == null) {
-      %>
-      <h4>
-        <span id="notifications" class="outputStub notification">No results</span>
-      </h4>
-      <table id="outputTable">
-        <tr>
-          <th>X</th>
-          <th>Y</th>
-          <th>R</th>
-          <th>Result</th>
-        </tr>
-      </table>
-      <% } else { %>
-      <h4>
-        <span class="notification"></span>
-      </h4>
-      <table id="outputTable">
-        <tr>
-          <th>X</th>
-          <th>Y</th>
-          <th>R</th>
-          <th>Result</th>
-        </tr>
-        <% for (Point point : dao.getPoints()) { %>
-        <tr>
-          <td><%= point.getX() %></td>
-          <td><%= point.getY() %></td>
-          <td><%= point.getR() %></td>
-          <td>
-            <%= point.isInArea() ? "<span class=\"success\">★ Hit</span>"
-              : "<span class=\"fail\">☆ Miss</span>" %>
-          </td>
-        </tr>
-        <% } %>
-      </table>
+  <<section class="module">
+  <div class="module-header">
+    <h3>Results of calculating:</h3>
+    <button class="toggle-button">&#9660;</button>
+  </div>
+  <div class="module-content">
+    <% if (pointDao.getPoints() == null || pointDao.getPoints().isEmpty()) { %>
+    <h4>
+      <span id="notifications" class="outputStub notification">No results</span>
+    </h4>
+    <table id="outputTable">
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>R</th>
+        <th>Result</th>
+      </tr>
+    </table>
+    <% } else { %>
+    <h4>
+      <span class="notification"></span>
+    </h4>
+    <table id="outputTable">
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>R</th>
+        <th>Result</th>
+      </tr>
+      <% for (Point point : pointDao.getPoints()) { %>
+      <tr>
+        <td><%= point.getX() %></td>
+        <td><%= point.getY() %></td>
+        <td><%= point.getR() %></td>
+        <td>
+          <%= point.isInArea() ? "<span class=\"success\">★ Hit</span>" : "<span class=\"fail\">☆ Miss</span>" %>
+        </td>
+      </tr>
       <% } %>
-    </div>
-  </section>
+    </table>
+    <% } %>
+  </div>
+</section>
 </main>
 
 
